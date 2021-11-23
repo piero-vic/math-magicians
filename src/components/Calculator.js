@@ -24,7 +24,7 @@ function Calculator() {
       <button className="operation-btn" type="button">+</button>
       <button className="two-col" type="button">0</button>
       <button type="button">.</button>
-      <button type="button">=</button>
+      <button className="operation-btn" type="button">=</button>
     </div>
   );
 }
