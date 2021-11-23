@@ -1,0 +1,35 @@
+* {
+  box-sizing: border-box;
+}
+
+.Calculator {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-width: 600px;
+  border: 1px solid grey;
+  margin: auto;
+}
+
+.output-bar {
+  grid-column: span 4;
+  text-align: right;
+  padding: 20px;
+  border: 1px solid grey;
+  color: white;
+  background: grey;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+button {
+  border: 1px solid grey;
+  padding: 20px;
+}
+
+.two-col {
+  grid-column: span 2;
+}
+
+.operation-btn {
+  background-color: orange;
+}
