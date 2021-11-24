@@ -1,5 +1,6 @@
 import React from 'react';
 import './Calculator.css';
+import Button from './Button';
 import calculate from '../logic/calculate';
 
 // eslint-disable-next-line react/prefer-stateless-function
@@ -16,38 +17,43 @@ class Calculator extends React.Component {
     this.buttonClick = this.buttonClick.bind(this);
   }
 
-  buttonClick(e) {
+  buttonClick(buttonName) {
     this.setState((state) => ({
-      data: calculate(state.data, e.target.name),
+      data: calculate(state.data, buttonName),
     }));
   }
 
   render() {
     const { data } = this.state;
+    const buttons = ['AC', '+/-', '%',
+      '÷', '7', '8', '9',
+      'x', '4', '5', '6',
+      '-', '1', '2', '3',
+      '+', '0', '.', '='];
+
     return (
       <div className="Calculator">
         <div className="output-bar">
           {data.next || data.operation || data.total || '0'}
         </div>
-        <button onClick={(e) => this.buttonClick(e)} name="AC" type="button">AC</button>
-        <button onClick={(e) => this.buttonClick(e)} name="+/-" type="button">+/-</button>
-        <button onClick={(e) => this.buttonClick(e)} name="%" type="button">%</button>
-        <button onClick={(e) => this.buttonClick(e)} className="operation-btn" name="÷" type="button">÷</button>
-        <button onClick={(e) => this.buttonClick(e)} name="7" type="button">7</button>
-        <button onClick={(e) => this.buttonClick(e)} name="8" type="button">8</button>
-        <button onClick={(e) => this.buttonClick(e)} name="9" type="button">9</button>
-        <button onClick={(e) => this.buttonClick(e)} className="operation-btn" name="x" type="button">x</button>
-        <button onClick={(e) => this.buttonClick(e)} name="4" type="button">4</button>
-        <button onClick={(e) => this.buttonClick(e)} name="5" type="button">5</button>
-        <button onClick={(e) => this.buttonClick(e)} name="6" type="button">6</button>
-        <button onClick={(e) => this.buttonClick(e)} className="operation-btn" name="-" type="button">-</button>
-        <button onClick={(e) => this.buttonClick(e)} name="1" type="button">1</button>
-        <button onClick={(e) => this.buttonClick(e)} name="2" type="button">2</button>
-        <button onClick={(e) => this.buttonClick(e)} name="3" type="button">3</button>
-        <button onClick={(e) => this.buttonClick(e)} className="operation-btn" name="+" type="button">+</button>
-        <button onClick={(e) => this.buttonClick(e)} className="two-col" name="0" type="button">0</button>
-        <button onClick={(e) => this.buttonClick(e)} name="." type="button">.</button>
-        <button onClick={(e) => this.buttonClick(e)} className="operation-btn" name="=" type="button">=</button>
+        {
+          buttons.map((btn) => (
+            <Button
+              key={btn.id}
+              className={
+                // eslint-disable-next-line no-nested-ternary
+                btn === '0'
+                  ? 'two-col'
+                  : btn === '÷' || btn === 'x' || btn === '-' || btn === '+' || btn === '='
+                    ? 'operation-btn'
+                    : ''
+              }
+              data={data}
+              buttonClick={() => this.buttonClick(btn)}
+              name={btn}
+            />
+          ))
+        }
       </div>
     );
   }
