@@ -1,33 +1,55 @@
 import React from 'react';
 import './Calculator.css';
+import Button from './Button';
+import calculate from '../logic/calculate';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class Calculator extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        total: null,
+        next: null,
+        operation: null,
+      },
+    };
+    this.buttonClick = this.buttonClick.bind(this);
+  }
+
+  buttonClick(buttonName) {
+    this.setState((state) => ({
+      data: calculate(state.data, buttonName),
+    }));
+  }
+
   render() {
+    const { data } = this.state;
+    const buttons = ['AC', '+/-', '%', '÷',
+      '7', '8', '9', 'x',
+      '4', '5', '6', '-',
+      '1', '2', '3', '+',
+      '0', '.', '='];
+
     return (
       <div className="Calculator">
         <div className="output-bar">
-          0
+          {data.next || data.operation || data.total || '0'}
         </div>
-        <button type="button">AC</button>
-        <button type="button">+/-</button>
-        <button type="button">%</button>
-        <button className="operation-btn" type="button">÷</button>
-        <button type="button">7</button>
-        <button type="button">8</button>
-        <button type="button">9</button>
-        <button className="operation-btn" type="button">x</button>
-        <button type="button">4</button>
-        <button type="button">5</button>
-        <button type="button">6</button>
-        <button className="operation-btn" type="button">-</button>
-        <button type="button">1</button>
-        <button type="button">2</button>
-        <button type="button">3</button>
-        <button className="operation-btn" type="button">+</button>
-        <button className="two-col" type="button">0</button>
-        <button type="button">.</button>
-        <button className="operation-btn" type="button">=</button>
+        {
+          buttons.map((btn) => (
+            <Button
+              key={btn.id}
+              className={
+                btn === '÷' || btn === 'x' || btn === '-' || btn === '+' || btn === '='
+                  ? 'operation-btn'
+                  : `btn${btn}`
+              }
+              data={data}
+              buttonClick={() => this.buttonClick(btn)}
+              name={btn}
+            />
+          ))
+        }
       </div>
     );
   }
