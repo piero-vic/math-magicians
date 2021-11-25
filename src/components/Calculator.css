@@ -26,7 +26,7 @@ button {
   padding: 20px;
 }
 
-.two-col {
+.btn0 {
   grid-column: span 2;
 }
 

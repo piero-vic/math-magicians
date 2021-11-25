@@ -3,7 +3,6 @@ import './Calculator.css';
 import Button from './Button';
 import calculate from '../logic/calculate';
 
-// eslint-disable-next-line react/prefer-stateless-function
 class Calculator extends React.Component {
   constructor(props) {
     super(props);
@@ -25,11 +24,11 @@ class Calculator extends React.Component {
 
   render() {
     const { data } = this.state;
-    const buttons = ['AC', '+/-', '%',
-      '÷', '7', '8', '9',
-      'x', '4', '5', '6',
-      '-', '1', '2', '3',
-      '+', '0', '.', '='];
+    const buttons = ['AC', '+/-', '%', '÷',
+      '7', '8', '9', 'x',
+      '4', '5', '6', '-',
+      '1', '2', '3', '+',
+      '0', '.', '='];
 
     return (
       <div className="Calculator">
@@ -41,12 +40,9 @@ class Calculator extends React.Component {
             <Button
               key={btn.id}
               className={
-                // eslint-disable-next-line no-nested-ternary
-                btn === '0'
-                  ? 'two-col'
-                  : btn === '÷' || btn === 'x' || btn === '-' || btn === '+' || btn === '='
-                    ? 'operation-btn'
-                    : ''
+                btn === '÷' || btn === 'x' || btn === '-' || btn === '+' || btn === '='
+                  ? 'operation-btn'
+                  : `btn${btn}`
               }
               data={data}
               buttonClick={() => this.buttonClick(btn)}
