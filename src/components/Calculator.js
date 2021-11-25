@@ -3,7 +3,7 @@ import './Calculator.css';
 import Button from './Button';
 import calculate from '../logic/calculate';
 
-function Calculator() {
+const Calculator = () => {
   const [data, updateData] = useState({
     total: null,
     next: null,
@@ -38,6 +38,6 @@ function Calculator() {
       }
     </div>
   );
-}
+};
 
 export default Calculator;
