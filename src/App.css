@@ -1,6 +1,41 @@
+.header {
+  padding: 10px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: grey;
+}
+
+.navigation {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+li a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .App {
-  text-align: center;
-  height: 100vh;
+  padding: 60px 60px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+  min-height: 80vh;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.calculator-container {
+  display: flex;
+  justify-content: space-between;
+  min-height: 80vh;
 }
