@@ -7,7 +7,6 @@
   grid-template-columns: repeat(4, 1fr);
   width: 400px;
   border: 1px solid grey;
-  margin: auto;
 }
 
 .output-bar {

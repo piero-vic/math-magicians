@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: grey
+  background-color: grey;
 }
 
 .navigation {
@@ -18,8 +18,24 @@ li a {
 }
 
 .App {
-  text-align: center;
-  min-height: 80vh;
+  padding: 60px 60px;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 60px;
+  min-height: 80vh;
+}
+
+.homepage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.calculator-container {
+  display: flex;
+  justify-content: space-between;
+  min-height: 80vh;
 }
