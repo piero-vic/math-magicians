@@ -84,4 +84,47 @@ describe('Calculate', () => {
       expect(result.total).toEqual('0.');
     });
   });
+
+  describe('When buttonName is \'=\'', () => {
+    test('when obj.next and obj.operation are not null, equals button returns', () => {
+      obj.total = '2';
+      obj.next = '3';
+      obj.operation = '+';
+
+      const result = calculate(obj, '=');
+
+      expect(result.total).toBe('5');
+    });
+
+    test('when there is no obj.operation', () => {
+      obj.operation = null;
+
+      expect(calculate(obj, '=')).toEqual({});
+    });
+  });
+
+  describe('When the buttonName is \'+/-\'', () => {
+    test('if obj.next exists return the neg of obj.next', () => {
+      obj.next = '3';
+      const result = calculate(obj, '+/-');
+
+      expect(result.next).toBe('-3');
+    });
+
+    test('if obj.total exists return the pos of obj.total', () => {
+      obj.next = null;
+      obj.total = '-3';
+
+      const result = calculate(obj, '+/-');
+
+      expect(result.total).toBe('3');
+    });
+
+    test('if there\'s no obj.next and obj.total, return {}', () => {
+      obj.next = null;
+      obj.total = null;
+
+      expect(calculate(obj, '+/-')).toEqual({});
+    });
+  });
 });
