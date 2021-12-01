@@ -127,4 +127,57 @@ describe('Calculate', () => {
       expect(calculate(obj, '+/-')).toEqual({});
     });
   });
+
+  test('User pressed an operation after pressing =', () => {
+    obj.next = null;
+    obj.total = '3';
+    obj.operation = null;
+
+    let result = calculate(obj, '+');
+    expect(result.operation).toBe('+');
+
+    result = calculate(obj, '-');
+    expect(result.operation).toBe('-');
+  });
+
+  describe('User pressed an operation button and there is an existing operation', () => {
+    test('only obj.total exists, return operation buttonName', () => {
+      obj.operation = '-';
+
+      const result = calculate(obj, '+');
+      expect(result.operation).toBe('+');
+    });
+
+    test('obj.total and object. next exists, execute operation', () => {
+      obj.operation = '-';
+      obj.total = '3';
+      obj.next = '5';
+
+      const result = calculate(obj, '+');
+
+      expect(result.total).toBe('-2');
+      expect(result.operation).toBe('+');
+    });
+  });
+
+  test('If the user hasn\'t typed a number yet, just save the operation', () => {
+    obj.operation = null;
+    obj.total = null;
+    obj.next = null;
+
+    const result = calculate(obj, '+');
+
+    expect(result.operation).toBe('+');
+  });
+
+  test("If there is only obj.next, save the operation and shift 'next' into 'total'", () => {
+    obj.operation = null;
+    obj.total = null;
+    obj.next = '3';
+
+    const result = calculate(obj, '+');
+
+    expect(result.total).toBe('3');
+    expect(result.operation).toBe('+');
+  });
 });
