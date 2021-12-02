@@ -24,7 +24,7 @@ const Calculator = () => {
       {
         buttons.map((btn) => (
           <Button
-            key={btn.id}
+            key={`btn-${btn}`}
             className={
               btn === '÷' || btn === 'x' || btn === '-' || btn === '+' || btn === '='
                 ? 'operation-btn'
