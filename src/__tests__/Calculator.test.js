@@ -19,14 +19,14 @@ test('Buttons runs operations and updates the UI', () => {
 
   const btn9 = component.container.querySelector('.btn9');
   expect(btn9).toHaveTextContent('9');
-  
+
   const sumButton = component.getByText('+');
   const equalButton = component.getByText('=');
 
-  fireEvent.click(btn9)
-  fireEvent.click(sumButton)
-  fireEvent.click(btn9)
-  fireEvent.click(equalButton)
+  fireEvent.click(btn9);
+  fireEvent.click(sumButton);
+  fireEvent.click(btn9);
+  fireEvent.click(equalButton);
 
   expect(outputBar).toHaveTextContent('18');
 });
