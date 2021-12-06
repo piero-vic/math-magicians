@@ -10,6 +10,11 @@
 
 - React
 
+## Live Demo
+
+- [Heroku](https://piero-vic-math-magicians.herokuapp.com/)
+- [Netlify](https://piero-vic-math-magicians.netlify.app/)
+
 ## Getting Started
 
 Clone the repo and enter the directory.
